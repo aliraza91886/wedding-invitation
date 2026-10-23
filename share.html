@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0a1630">
+<title>Share Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Great+Vibes&family=Jost:wght@400;500&display=swap">
+<style>
+:root {
+  --ink: #0a1630; --ink-2: #16295c; --ivory: #f6efe1; --paper: #fbf7ee; --text: #1b2236;
+  --brass: #b4833f; --brass-hi: #e6c78f;
+  --font-script: "Great Vibes", "Snell Roundhand", cursive;
+  --font-display: "Cinzel", "Cormorant Garamond", Georgia, serif;
+  --font-serif: "Cormorant Garamond", Georgia, "Times New Roman", serif;
+  --font-label: "Jost", "Helvetica Neue", Arial, sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body {
+  margin: 0; min-height: 100vh; color: var(--text); font-family: var(--font-serif); font-size: 20px; line-height: 1.5;
+  background: radial-gradient(ellipse at 50% 0%, #fdf9ef, var(--ivory) 60%, #e9dcc0);
+  padding: max(28px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(40px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px));
+}
+h1, h2, p { margin: 0; }
+.wrap { max-width: 640px; margin: 0 auto; }
+.label { font-family: var(--font-label); font-weight: 500; letter-spacing: .3em; text-transform: uppercase; font-size: .72rem; color: var(--brass); }
+header { text-align: center; padding-block: 1rem 2rem; }
+h1 { font-family: var(--font-script); font-weight: 400; font-size: clamp(2.8rem, 11vw, 4rem); color: var(--ink-2); line-height: 1.15; margin-top: .4rem; }
+header p.sub { font-style: italic; margin-top: .4rem; }
+.card { background: var(--paper); border: 1px solid var(--brass); box-shadow: inset 0 0 0 6px var(--paper), inset 0 0 0 7px rgba(180,131,63,.45), 0 24px 50px rgba(27,34,54,.12); padding: clamp(1.8rem, 6vw, 2.8rem) clamp(1.3rem, 5vw, 2.4rem); display: grid; gap: 1.8rem; }
+fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+legend, .field > label { font-family: var(--font-label); font-weight: 500; letter-spacing: .2em; text-transform: uppercase; font-size: .74rem; color: var(--ink-2); padding: 0; margin-bottom: .7rem; display: block; }
+.hint { font-size: .98rem; opacity: .8; margin-top: .5rem; }
+input[type="text"], textarea, .out {
+  width: 100%; font: inherit; font-size: 1.15rem; color: var(--text); background: #fff; border: 1px solid rgba(180,131,63,.7); border-radius: 10px; padding: .8rem 1rem; min-height: 52px;
+}
+textarea { min-height: 120px; resize: vertical; line-height: 1.45; }
+input:focus-visible, textarea:focus-visible, .chip input:focus-visible + span, .btn:focus-visible { outline: 2px solid var(--brass); outline-offset: 3px; }
+.chips { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: .7rem; }
+.chip { position: relative; }
+.chip input { position: absolute; opacity: 0; inset: 0; width: 100%; height: 100%; margin: 0; cursor: pointer; }
+.chip span { display: grid; gap: .1rem; text-align: center; padding: .85rem .6rem; min-height: 64px; align-content: center; border: 1px solid rgba(180,131,63,.7); border-radius: 12px; background: #fff; transition: background .2s, color .2s, border-color .2s; }
+.chip b { font-family: var(--font-display); font-weight: 600; letter-spacing: .14em; text-transform: uppercase; font-size: .92rem; }
+.chip small { font-family: var(--font-label); font-size: .72rem; letter-spacing: .1em; opacity: .75; }
+.chip input:checked + span { background: var(--ink-2); border-color: var(--ink-2); color: var(--ivory); }
+.chip input:checked + span small { opacity: .85; color: var(--brass-hi); }
+.chip.all span { background: transparent; }
+.chip.all input:checked + span { background: var(--brass); border-color: var(--brass); color: var(--ink); }
+.chip.all input:checked + span small { color: var(--ink); }
+.result { display: grid; gap: 1rem; padding-top: 1.6rem; border-top: 1px solid rgba(180,131,63,.5); }
+.out { word-break: break-all; font-family: var(--font-label); font-size: .95rem; line-height: 1.4; user-select: all; background: var(--ivory); min-height: 0; }
+.row { display: flex; flex-wrap: wrap; gap: .7rem; }
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; min-height: 50px; padding: .8rem 1.5rem; cursor: pointer; text-decoration: none;
+  font-family: var(--font-label); font-weight: 500; letter-spacing: .14em; text-transform: uppercase; font-size: .78rem;
+  color: var(--ivory); background: var(--ink-2); border: 1px solid var(--ink-2); border-radius: 999px; transition: transform .2s, box-shadow .2s, background .2s;
+  -webkit-tap-highlight-color: transparent; flex: 1 1 auto;
+}
+.btn:hover { transform: translateY(-2px); box-shadow: 0 10px 22px rgba(10,22,48,.25); }
+.btn:active { transform: translateY(1px) scale(.98); }
+.btn.ghost { background: transparent; color: var(--ink-2); border-color: var(--brass); }
+.btn.wa { background: #1f7a4d; border-color: #1f7a4d; color: #fff; }
+.err { color: #9a2a2a; font-family: var(--font-label); font-size: .9rem; }
+@media (prefers-reduced-motion: reduce) { .btn, .chip span { transition: none; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="label">For the family only</p>
+    <h1>Share the Invitation</h1>
+    <p class="sub">Choose who you are inviting and to which events. The link shows only that.</p>
+  </header>
+
+  <form class="card" id="form" autocomplete="off">
+    <div class="field">
+      <label for="guest">Guest or family name</label>
+      <input type="text" id="guest" maxlength="80" placeholder="Ramzan and family">
+      <p class="hint">Optional. It appears on the envelope and on the invitation, for this link only.</p>
+    </div>
+
+    <fieldset>
+      <legend>Events to include</legend>
+      <div class="chips">
+        <label class="chip all"><input type="checkbox" id="all" checked><span><b>All events</b><small>18 to 20 Nov</small></span></label>
+        <label class="chip"><input type="checkbox" name="ev" value="mehandi" checked><span><b>Mehandi</b><small>Wed 18 Nov</small></span></label>
+        <label class="chip"><input type="checkbox" name="ev" value="barat" checked><span><b>Barat</b><small>Thu 19 Nov</small></span></label>
+        <label class="chip"><input type="checkbox" name="ev" value="walima" checked><span><b>Walima</b><small>Fri 20 Nov</small></span></label>
+      </div>
+      <p class="err" id="err" role="alert" hidden>Select at least one event.</p>
+    </fieldset>
+
+    <div class="result" id="result">
+      <div class="field">
+        <label for="link">Link for this guest</label>
+        <div class="out" id="link" tabindex="0" role="textbox" aria-readonly="true"></div>
+      </div>
+      <div class="row">
+        <button type="button" class="btn" id="copyLink">Copy link</button>
+        <a class="btn ghost" id="preview" href="#" target="_blank" rel="noopener">Preview</a>
+      </div>
+
+      <div class="field">
+        <label for="msg">Message</label>
+        <textarea id="msg"></textarea>
+        <p class="hint">Edit it if you like, then send it on WhatsApp or copy it.</p>
+      </div>
+      <div class="row">
+        <a class="btn wa" id="wa" href="#" target="_blank" rel="noopener">Send on WhatsApp</a>
+        <button type="button" class="btn ghost" id="copyMsg">Copy message</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<script>
+(function () {
+  try { localStorage.setItem('inv-owner', '1'); } catch (e) {}
+  var $ = function (id) { return document.getElementById(id); };
+  var boxes = Array.prototype.slice.call(document.querySelectorAll('input[name="ev"]'));
+  var all = $('all'), guest = $('guest'), link = $('link'), msg = $('msg');
+  var LABEL = { mehandi: 'Mehandi', barat: 'Barat', walima: 'Walima' };
+  var WHEN = { mehandi: 'Wednesday 18 November, 9 PM', barat: 'Thursday 19 November, 11 AM', walima: 'Friday 20 November, 6:30 PM' };
+  var base = new URL('./', location.href).href;
+  var msgEdited = false;
+
+  function chosen() { return boxes.filter(function (b) { return b.checked; }).map(function (b) { return b.value; }); }
+  function url() {
+    var ev = chosen(), parts = [];
+    var g = guest.value.replace(/\s+/g, ' ').trim();
+    if (g) parts.push('for=' + encodeURIComponent(g));
+    if (ev.length && ev.length < boxes.length) parts.push('events=' + ev.join(','));
+    if (parts.length) parts.push('v=1'); /* harmless ender: text glued to the link by chat apps lands here, not on the name or events */
+    return base + (parts.length ? '?' + parts.join('&') : '');
+  }
+  function listText(ev) {
+    var n = ev.map(function (k) { return LABEL[k]; });
+    return n.length > 1 ? n.slice(0, -1).join(', ') + ' and ' + n[n.length - 1] : n[0];
+  }
+  function draft(ev, u) {
+    var g = guest.value.replace(/\s+/g, ' ').trim();
+    var lines = ['Assalamu Alaikum' + (g ? ' ' + g : '') + ',', '',
+      'You are warmly invited to the ' + listText(ev) + ' of Ahad Ali\'s wedding.', ''];
+    ev.forEach(function (k) { lines.push(LABEL[k] + ': ' + WHEN[k]); });
+    lines.push('', 'Open your invitation: ' + u);
+    return lines.join('\n');
+  }
+  function update() {
+    var ev = chosen();
+    all.checked = ev.length === boxes.length;
+    $('err').hidden = ev.length > 0;
+    $('result').hidden = ev.length === 0;
+    if (!ev.length) return;
+    var u = url();
+    link.textContent = u;
+    $('preview').href = u;
+    if (!msgEdited) msg.value = draft(ev, u);
+    else msg.value = msg.value.replace(/https?:\/\/\S+$/, u);
+    $('wa').href = 'https://wa.me/?text=' + encodeURIComponent(msg.value);
+  }
+  function copy(text, btn) {
+    var label = btn.textContent;
+    function done(ok) { btn.textContent = ok ? 'Copied' : 'Press and hold to copy'; setTimeout(function () { btn.textContent = label; }, 2000); }
+    try { navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); }); }
+    catch (e) { done(false); }
+  }
+
+  all.addEventListener('change', function () { boxes.forEach(function (b) { b.checked = all.checked; }); update(); });
+  boxes.forEach(function (b) { b.addEventListener('change', function () { msgEdited = false; update(); }); });
+  guest.addEventListener('input', function () { msgEdited = false; update(); });
+  msg.addEventListener('input', function () { msgEdited = true; $('wa').href = 'https://wa.me/?text=' + encodeURIComponent(msg.value); });
+  $('copyLink').addEventListener('click', function () { copy(link.textContent, this); });
+  $('copyMsg').addEventListener('click', function () { copy(msg.value, this); });
+  $('form').addEventListener('submit', function (e) { e.preventDefault(); });
+  update();
+})();
+</script>
+</body>
+</html>
