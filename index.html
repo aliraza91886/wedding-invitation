@@ -1659,7 +1659,7 @@
 
       function hintScroll() {
         if (reduce) return;
-        var cancelled = false, nudgeTimer, returnTimer;
+        var cancelled = false, nudgeTimer;
         var events = ['wheel', 'touchstart', 'pointerdown', 'keydown'];
         function cleanup() {
           events.forEach(function (eventName) {
@@ -1669,7 +1669,6 @@
         function cancel() {
           cancelled = true;
           clearTimeout(nudgeTimer);
-          clearTimeout(returnTimer);
           cleanup();
         }
         events.forEach(function (eventName) {
@@ -1677,11 +1676,8 @@
         });
         nudgeTimer = setTimeout(function () {
           if (cancelled || document.hidden || window.scrollY > 5) { cleanup(); return; }
-          window.scrollTo({ top: 100, behavior: 'smooth' });
-          returnTimer = setTimeout(function () {
-            if (!cancelled) window.scrollTo({ top: 0, behavior: 'smooth' });
-            cleanup();
-          }, 900);
+          window.scrollTo({ top: 220, behavior: 'smooth' });
+          cleanup();
         }, 3000);
       }
       function openInvite() {
